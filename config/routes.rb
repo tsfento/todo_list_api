@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   # root "posts#index"
   post '/login', to: 'sessions#create'
   resources :todos
-  resources :users, only: [:create]
+  resources :users, only: [:create] do
+    post 'upload_image', to: 'users#upload_image'
+  end
 
   get '/my_todos', to: 'todos#my_todos'
 end
